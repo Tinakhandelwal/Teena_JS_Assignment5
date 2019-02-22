@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CheckDataType</title>
+</head>
+
+<body>
+    <script>
+        /*Arrow Function*/
+        checkdatatype = (a) => {
+
+            if (isNaN(a) && typeof a === 'number') {
+                console.log("Type:NaN" + " " + "value:" + a);
+            }
+            /* Check Null Type*/
+            else if (a === null && typeof a == 'object') {
+                console.log("Type:null" + " " + "value:" + a);
+            }
+            /* Check array and array of object...Map the values*/
+            else if (a && typeof a === 'object' && a.constructor === Array) {
+                if (a[0].constructor === Object) {
+                    console.log("Type:Array of Objects");
+                    a.map((value) => {
+                        console.log(value);
+                    })
+                }
+                else {
+                    console.log("Type:Array");
+                    console.log(a);
+                }
+            }
+            /* Check Object Type*/
+            else if (typeof a === 'object' && a.constructor === Object) {
+                console.log("Type:Object" + " ");
+                var keys = Object.keys(a);
+                var values = Object.values(a);
+                console.log("{");
+                keys.map((v, i) => {
+                    console.log(v + ":" + values[i]);
+
+                })
+                console.log("}");
+            }
+            /* Check Number Type*/
+            else if (typeof a === 'number' && isFinite(a)) {
+                console.log("type:Number" + " " + "value:" + a);
+            }
+            /* Check String Type*/
+            else if (typeof a === 'string' || a instanceof String) {
+                console.log("type:String" + " " + "value:" + a);
+            }
+            /* Check Boolean Type*/
+            else if (typeof a === 'boolean') {
+                console.log("type:Boolean" + " " + "value:" + a);
+            }
+            /* Check Undefined Type*/
+            else if (typeof a === 'undefined') {
+                console.log("Type:undefined"+" "+"value:"+a);
+            }
+            else {
+                console.log("Hiii");
+            }
+        }
+        checkdatatype(NaN);
+        checkdatatype(null);
+        checkdatatype([{ "id": 1 }, { "val": 5 }]);
+        checkdatatype([1, 2, 3]);
+        checkdatatype({ "id": 400, "amt": 200 });
+        checkdatatype("Teena");
+        checkdatatype(2);
+        checkdatatype(true);
+        checkdatatype();
+    </script>
+</body>
+</html>
